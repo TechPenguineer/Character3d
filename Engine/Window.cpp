@@ -4,6 +4,10 @@ Window::Window()
 {
 
 }
+LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam)
+{
+
+}
 
 bool Window::init()
 {
@@ -19,17 +23,29 @@ bool Window::init()
 	wc.lpszClassName = L"MyWindowclass";
 	wc.lpszMenuName = L"";
 	wc.style = NULL;
-
+	wc.lpfnWndProc = &WndProc;
 	if(!::RegisterClassEx(&wc))
 	{
 		return false;
 	}
 	m_hwnd=::CreateWindowEx(WS_EX_OVERLAPPEDWINDOW, L"MyWindowClass", L"Character 3D", WS_OVERLAPPEDWINDOW, CW_USEDEFAULT, CW_USEDEFAULT, 1024, 768, NULL, NULL, NULL,NULL);
 
+	if (!m_hwnd)
+	{
+		return false;
+	}
+
+	::ShowWindow(m_hwnd, SW_SHOW);
+	::UpdateWindow(m_hwnd);
+
 	return true;
 }
 
 bool Window::release()
 {
+	if (!::DestroyWindow(m_hwnd))
+	{
+		return false;
+	}
 	return true;
 }
