@@ -6,4 +6,6 @@ class Window
 	bool init();
 	bool release();
 	~Window();
+protected:
+	HWND m_hwnd;
 };

@@ -24,7 +24,7 @@ bool Window::init()
 	{
 		return false;
 	}
-	::CreateWindowEx(WS_EX_OVERLAPPEDWINDOW, L"MyWindowClass", L"Character 3D", WS_OVERLAPPEDWINDOW, CW_USEDEFAULT, CW_USEDEFAULT, 1024, 768, NULL, NULL, NULL,NULL);
+	m_hwnd=::CreateWindowEx(WS_EX_OVERLAPPEDWINDOW, L"MyWindowClass", L"Character 3D", WS_OVERLAPPEDWINDOW, CW_USEDEFAULT, CW_USEDEFAULT, 1024, 768, NULL, NULL, NULL,NULL);
 
 	return true;
 }
